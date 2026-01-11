@@ -3,252 +3,253 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Jeet Parekh · Creative Developer</title>
-  <meta name="description" content="Creative developer building responsive, on-brand web experiences with analytics, SEO and performance baked in. 40% faster dashboards, 80+ zero-downtime releases, 15k+ records migrated." />
-  <meta name="color-scheme" content="dark light">
-  <meta property="og:title" content="Jeet Parekh · Creative Developer" />
-  <meta property="og:description" content="Drupal/React, UX, analytics, conversion. 40% faster dashboards, 80+ zero-downtime releases." />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://jeetparekh16.github.io/Portfolio_CreativeDeveloper/" />
-
+  <title>Jeet Parekh — Creative Developer</title>
+  <meta name="description" content="Jeet Parekh — Creative Developer. I build fast, on-brand web experiences with analytics, SEO and performance baked in. Recently shipped 80+ zero-downtime releases and made authenticated dashboards 40% faster for 5,000+ users." />
+  <meta name="color-scheme" content="dark light" />
   <style>
-    /* ---------- design tokens ---------- */
     :root{
-      --bg:#0b0c10;
-      --panel:#121319;
-      --text:#e7eaea;
-      --muted:#9aa6b2;
-      --brand-1:#77ffe8; /* cyan mint */
-      --brand-2:#ff8bd2; /* pink */
-      --brand-3:#9bb3ff; /* violet */
-      --ok:#61d095;
-      --warn:#f7c948;
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-      --radius: 18px;
-      --radius-sm: 12px;
-      --maxw: 1120px;
-
-      --step--1: clamp(.85rem, .84rem + .1vw, .95rem);
-      --step-0: clamp(1.0rem, .98rem + .3vw, 1.1rem);
-      --step-1: clamp(1.25rem, 1.1rem + .8vw, 1.5rem);
-      --step-2: clamp(1.6rem, 1.3rem + 1.5vw, 2.1rem);
-      --step-3: clamp(2.2rem, 1.5rem + 3vw, 3rem);
-      --step-4: clamp(3rem, 2rem + 4vw, 4rem);
+      --bg-1:#0a0f1a; --bg-2:#0b1222; --bg-3:#06141f;
+      --card:#0f1b2d; --glass:rgba(255,255,255,.06);
+      --text:#e8eef8; --muted:#a6b3c7; --ink:#0a0e14;
+      --brand-1:#66ffe0; --brand-2:#8ea6ff; --brand-3:#ff8fe8;
+      --accent:#7de1ff; --ok:#51ffa8; --warn:#ffd166;
+      --radius:18px; --shadow:0 10px 30px rgba(0,0,0,.35);
+      --gap:16px; --pad:20px; --max:1160px;
+      --h1:clamp(2.2rem,4.6vw,4.2rem);
+      --h2:clamp(1.4rem,2.2vw,2rem);
+      --lead:clamp(1rem,1.1vw,1.125rem);
     }
-
-    @media (prefers-color-scheme: light){
-      :root{ --bg:#f6f8fb; --panel:#ffffff; --text:#111316; --muted:#5a6570; --shadow:0 10px 26px rgba(18,19,25,.08); }
-      .badge{ border-color: rgba(17,19,22,.08); }
-    }
-
-    /* ---------- base ---------- */
-    *{ box-sizing: border-box; }
-    html, body{ height:100%; scroll-behavior:smooth; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
-      margin:0; font: 400 var(--step-0)/1.6 ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
-      color:var(--text); background: radial-gradient(1200px 800px at 20% -10%, rgba(119,255,232,.18), transparent 60%),
-                         radial-gradient(1200px 800px at 120% 20%, rgba(155,179,255,.20), transparent 60%),
-                         var(--bg);
-      -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility;
+      margin:0; font:500 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Inter, "Helvetica Neue", Arial, sans-serif;
+      color:var(--text); background: radial-gradient(1200px 800px at 15% 10%, #111b2c 0%, #0a0f1a 40%, #03060b 100%);
+      overflow-x:hidden;
     }
-    a{ color:inherit; text-decoration: none; }
-    img{ max-width:100%; display:block; }
-    .container{ width: min(100% - 2rem, var(--maxw)); margin-inline:auto; }
+    /* animated background aura */
+    .aura{
+      position:fixed; inset:-40% -20% auto -20%; height:140vh; z-index:-1;
+      background:
+        radial-gradient(600px 400px at 10% 15%, rgba(125,225,255,.35), transparent 60%),
+        radial-gradient(700px 420px at 85% 25%, rgba(255,143,232,.28), transparent 60%),
+        radial-gradient(780px 520px at 60% 80%, rgba(102,255,224,.25), transparent 60%);
+      filter:saturate(110%) blur(30px);
+      animation:aura 16s ease-in-out infinite alternate;
+    }
+    @keyframes aura{to{transform:translateY(-3%) scale(1.03)}}
+    @media (prefers-reduced-motion:reduce){.aura{animation:none}}
 
-    /* skip link */
-    .skip{ position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden; }
-    .skip:focus{ position: fixed; left: 1rem; top: 1rem; width:auto; height:auto; padding:.6rem 1rem; background:#000; color:#fff; z-index:9999; border-radius:10px; outline:2px solid var(--brand-1); }
-
-    /* ---------- header/nav ---------- */
     header{
-      position:sticky; top:0; z-index:100; backdrop-filter: blur(8px);
-      background: color-mix(in oklab, var(--bg) 92%, transparent); border-bottom: 1px solid rgba(255,255,255,.05);
+      position:sticky; top:0; backdrop-filter:saturate(140%) blur(10px);
+      background:linear-gradient(to bottom, rgba(8,12,20,.75), rgba(8,12,20,.15));
+      border-bottom:1px solid rgba(255,255,255,.06); z-index:10;
     }
     .nav{
-      display:flex; align-items:center; justify-content:space-between; padding:.8rem 0;
+      margin:auto; max-width:var(--max);
+      display:flex; align-items:center; justify-content:space-between; padding:10px var(--pad);
     }
-    .brand{ font-weight:800; letter-spacing:.2px; }
-    .brand span{ background: linear-gradient(90deg,var(--brand-1),var(--brand-2),var(--brand-3));
-      -webkit-background-clip: text; background-clip:text; color: transparent; }
-    .actions{ display:flex; gap:.6rem; }
+    .brand{font-weight:800; letter-spacing:.3px; font-size:1.05rem}
+    .brand .dot{color:var(--brand-1)}
+    .actions{display:flex; gap:10px; flex-wrap:wrap}
     .btn{
-      display:inline-flex; align-items:center; gap:.5rem;
-      padding:.6rem .9rem; border-radius: 999px; border:1px solid rgba(255,255,255,.12);
-      background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 70%, transparent), var(--panel));
-      box-shadow: var(--shadow); transition: transform .15s ease, border-color .15s ease;
+      padding:10px 14px; border-radius:999px; border:1px solid rgba(255,255,255,.12);
+      background:linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+      color:var(--text); text-decoration:none; display:inline-flex; align-items:center; gap:8px;
+      box-shadow:0 2px 0 rgba(255,255,255,.06) inset, 0 1px 0 rgba(0,0,0,.25);
+      transition:.2s transform, .2s border-color, .2s background;
       font-weight:600;
     }
-    .btn:hover{ transform: translateY(-1px); border-color: color-mix(in oklab, var(--brand-3) 50%, transparent); }
-    .btn--primary{ border-color: transparent; background: linear-gradient(135deg, color-mix(in oklab, var(--brand-1) 45%, var(--panel)), color-mix(in oklab, var(--brand-3) 40%, var(--panel))); color:#08121a; }
-    .btn:focus-visible{ outline: 2px solid var(--brand-1); outline-offset: 2px; }
+    .btn:hover{transform:translateY(-1px); border-color:rgba(255,255,255,.24)}
+    .btn.primary{border-color:transparent; background:linear-gradient(90deg, var(--brand-1), var(--brand-2), var(--brand-3)); color:#001018}
 
-    /* ---------- hero ---------- */
-    .hero{ padding: 4rem 0 2rem; position:relative; }
-    .kicker{ display:inline-flex; gap:.5rem; align-items:center; padding:.35rem .7rem; border-radius:999px; border:1px solid rgba(255,255,255,.12); background: color-mix(in oklab, var(--panel) 75%, transparent); color:var(--muted); font-weight:700; font-size:.85rem; letter-spacing:.25px;}
-    h1{ font-size: var(--step-4); line-height: 1.05; letter-spacing:-.5px; margin:1rem 0 1rem; }
-    h1 .accent{ background: linear-gradient(90deg,var(--brand-1),var(--brand-2),var(--brand-3)); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .lead{ color:var(--muted); max-width: 58ch; font-size: var(--step-1); }
+    main{margin:auto; max-width:var(--max); padding:40px var(--pad) 80px}
+    .tagline{display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.12); color:var(--muted); margin-bottom:12px; font-weight:600}
+    h1{font-size:var(--h1); line-height:1.1; margin:0 0 16px; letter-spacing:-.5px}
+    .highlight{background:linear-gradient(90deg, var(--brand-1), var(--brand-2), var(--brand-3)); -webkit-background-clip:text; background-clip:text; color:transparent}
+    .lead{font-size:var(--lead); color:var(--muted); max-width:860px}
 
-    .hero-grid{ display:grid; grid-template-columns: 1.4fr .9fr; gap:2rem; align-items:start; margin-top: 2rem; }
-    @media (max-width: 900px){ .hero-grid{ grid-template-columns: 1fr; } }
+    .grid{display:grid; gap:var(--gap)}
+    .hero{grid-template-columns:1.15fr .85fr; align-items:start; margin-top:26px}
+    @media (max-width:960px){.hero{grid-template-columns:1fr}}
 
-    .stats{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:1rem; margin-top: 1.5rem;}
-    @media (max-width: 720px){ .stats{ grid-template-columns: 1fr 1fr; } }
-
-    .stat{
-      background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 80%, transparent), var(--panel));
-      border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); padding:1rem 1.2rem; box-shadow: var(--shadow);
+    .glass{
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border:1px solid rgba(255,255,255,.12); border-radius:var(--radius); box-shadow:var(--shadow);
     }
-    .stat b{ font-size: var(--step-1); display:block; }
-    .badge-row{ display:flex; flex-wrap:wrap; gap:.5rem; margin-top:1rem;}
-    .badge{ border:1px solid rgba(255,255,255,.12); border-radius:999px; padding:.35rem .7rem; color:var(--muted); font-weight:600; font-size:.85rem; }
+    .panel{padding:22px}
+    .snapshot h2{margin:0 0 10px; font-size:var(--h2)}
+    .li{display:flex; gap:10px; margin:12px 0; color:var(--text)}
+    .dot{width:8px; height:8px; border-radius:50%; background:var(--brand-1); margin-top:.6em; box-shadow:0 0 10px var(--brand-1)}
+    .muted{color:var(--muted)}
 
-    .panel{
-      background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 90%, transparent), var(--panel));
-      border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); box-shadow: var(--shadow); padding:1.2rem 1.3rem;
-    }
-    .panel h2{ font-size: var(--step-2); margin:.2rem 0 1rem; }
+    .kpis{display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); margin:24px 0 10px}
+    @media (max-width:820px){.kpis{grid-template-columns:1fr}}
+    .kpi{padding:18px; border-radius:var(--radius); background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02)); border:1px solid rgba(255,255,255,.12)}
+    .kpi .num{font-size:1.6rem; font-weight:800}
+    .kpi .sub{font-weight:600; color:var(--muted)}
 
-    /* ---------- sections ---------- */
-    section{ padding: 3.2rem 0; }
-    .section-title{ font-size: var(--step-2); margin: 0 0 1.2rem; }
-    .grid{ display:grid; gap:1rem; }
+    /* Projects */
+    section{margin-top:56px}
+    .cards{display:grid; grid-template-columns:repeat(2,1fr); gap:var(--gap)}
+    @media (max-width:900px){.cards{grid-template-columns:1fr}}
+    .card{padding:22px; border-radius:var(--radius); border:1px solid rgba(255,255,255,.12); background:linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02)); box-shadow:var(--shadow)}
+    .card h3{margin:0 0 6px}
+    .chiprow{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px}
+    .chip{font-size:.85rem; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.14); color:var(--muted); background:rgba(255,255,255,.04)}
+    .cta{margin-top:12px}
 
-    .cards{ display:grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap:1rem; }
-    @media (max-width: 900px){ .cards{ grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 640px){ .cards{ grid-template-columns: 1fr; } }
+    /* Skills bar */
+    .skills{display:flex; gap:8px; flex-wrap:wrap; margin-top:14px}
+    .skill{padding:7px 10px; border-radius:10px; background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12); color:var(--muted)}
 
-    .card{
-      border:1px solid rgba(255,255,255,.08); border-radius: var(--radius); background: linear-gradient(180deg, color-mix(in oklab, var(--panel) 88%, transparent), var(--panel));
-      padding: 1.1rem 1.1rem 1rem; box-shadow: var(--shadow); display:flex; flex-direction:column; gap:.7rem; min-height: 180px;
-    }
-    .card h3{ margin:.2rem 0; font-size: var(--step-1); }
-    .card p{ color:var(--muted); margin:0; }
-    .card .chiprow{ display:flex; flex-wrap:wrap; gap:.4rem; margin-top:.2rem;}
-    .chip{ font-size:.8rem; border:1px solid rgba(255,255,255,.1); padding:.25rem .55rem; border-radius:999px; color:var(--muted); }
-    .card a.cta{ margin-top:.6rem; align-self:flex-start; }
-
-    /* ---------- footer ---------- */
-    footer{ padding:2.5rem 0 3rem; color:var(--muted); border-top:1px solid rgba(255,255,255,.05); }
-    .footgrid{ display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap; }
-    .tiny{ font-size: var(--step--1); }
-
-    /* ---------- utilities ---------- */
-    .mt-1{ margin-top: .5rem; } .mt-2{ margin-top: 1rem; } .mt-3{ margin-top: 1.5rem; }
-    .visually-hidden{ position:absolute!important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0; }
+    footer{margin:auto; max-width:var(--max); padding:40px var(--pad) 80px; color:var(--muted)}
+    footer a{color:var(--text)}
   </style>
 </head>
 <body>
-  <a class="skip" href="#main">Skip to content</a>
+  <div class="aura" aria-hidden="true"></div>
 
   <header>
-    <div class="container nav" role="navigation" aria-label="Primary">
-      <div class="brand">JP:<span>Creative&nbsp;Dev</span></div>
+    <nav class="nav" aria-label="Primary">
+      <div class="brand">JP<span class="dot">•</span>Creative&nbsp;Dev</div>
       <div class="actions">
-        <!-- TODO(1): update your email and LinkedIn -->
-        <a class="btn" href="mailto:jeetparekh80@gmail.com">✉︎ Contact</a>
-        <a class="btn" href="https://linkedin.com/in/jeetparekh16" target="_blank" rel="noreferrer">in LinkedIn</a>
-        <a class="btn btn--primary" href="#projects">◆ Projects</a>
+        <a class="btn" href="#contact">Contact</a>
+        <a class="btn" href="https://linkedin.com/in/jeetparekh16" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="btn primary" href="#projects">Projects</a>
       </div>
-    </div>
+    </nav>
   </header>
 
-  <main id="main">
-    <section class="hero">
-      <div class="container">
-        <span class="kicker">Creative Developer · Web · UX · Analytics</span>
-        <h1>Designing experiences that <span class="accent">convert</span> and perform.</h1>
+  <main>
+    <!-- HERO -->
+    <div class="tagline">Creative Developer · Web · UX · Analytics</div>
+    <section class="grid hero">
+      <div>
+        <h1>Designing experiences that <span class="highlight">convert</span> and perform.</h1>
         <p class="lead">
-          I build responsive, on-brand websites and dashboards with analytics, SEO and performance baked in.
-          Recently shipped <b>80+ zero-downtime</b> releases and made authenticated dashboards <b>40% faster</b> for <b>5,000+ users</b>.
+          I build responsive, on-brand sites and dashboards with analytics, SEO, and performance baked in.
+          Recently shipped <strong>80+ zero-downtime</strong> releases and made authenticated dashboards
+          <strong>40% faster</strong> for <strong>5,000+ users</strong>.
         </p>
 
-        <div class="hero-grid">
-          <div>
-            <div class="stats">
-              <div class="stat"><b>40% faster</b><span class="tiny">Authenticated dashboard load</span></div>
-              <div class="stat"><b>80+ releases</b><span class="tiny">Zero-downtime deployments</span></div>
-              <div class="stat"><b>15,000+ records</b><span class="tiny">Migrated accurately</span></div>
-            </div>
-            <div class="badge-row" aria-label="Skills tags">
-              <span class="badge">HTML</span><span class="badge">CSS</span><span class="badge">JavaScript</span>
-              <span class="badge">React</span><span class="badge">Drupal 9/10</span><span class="badge">PHP</span><span class="badge">REST/SOAP</span>
-            </div>
+        <div class="kpis">
+          <div class="kpi">
+            <div class="num">40% faster</div>
+            <div class="sub">Authenticated dashboard load</div>
           </div>
-
-          <aside class="panel" aria-labelledby="snapshot">
-            <h2 id="snapshot">Snapshot</h2>
-            <ul>
-              <li><b>Lead Full-Stack Drupal Developer</b> @ Optimoz — React components + Drupal content models (Entity API, Views, Webform, Paragraphs) powering state/federal stakeholder workflows.</li>
-              <li>Secure integrations with legacy .NET via REST/SOAP for bidirectional data sync.</li>
-              <li>RBAC with Group, Workflow, and Content Moderation ensuring PII compliance.</li>
-            </ul>
-          </aside>
+          <div class="kpi">
+            <div class="num">80+ releases</div>
+            <div class="sub">Zero-downtime deployments</div>
+          </div>
+          <div class="kpi">
+            <div class="num">15,000+</div>
+            <div class="sub">Records migrated accurately</div>
+          </div>
         </div>
+
+        <div class="skills" aria-label="Key skills">
+          <span class="skill">HTML</span><span class="skill">CSS</span><span class="skill">JavaScript</span>
+          <span class="skill">React</span><span class="skill">Drupal 9/10</span><span class="skill">PHP</span>
+          <span class="skill">REST / SOAP</span><span class="skill">MySQL</span><span class="skill">RHEL</span>
+          <span class="skill">Google Analytics</span>
+        </div>
+      </div>
+
+      <!-- Snapshot -->
+      <aside class="glass panel snapshot" aria-label="Snapshot">
+        <h2>Snapshot</h2>
+        <div class="li"><span class="dot" aria-hidden="true"></span>
+          <div><strong>Lead Full-Stack Drupal Developer</strong> @ Optimoz — React components + Drupal content models (Entity API, Views, Webform, Paragraphs) powering state/federal stakeholder workflows.</div>
+        </div>
+        <div class="li"><span class="dot" aria-hidden="true"></span>
+          <div>Secure integrations with legacy <strong>.NET</strong> via <strong>REST/SOAP</strong> for bidirectional data sync.</div>
+        </div>
+        <div class="li"><span class="dot" aria-hidden="true"></span>
+          <div>Strict <strong>RBAC</strong> with Group, Workflow and Content Moderation ensuring PII compliance.</div>
+        </div>
+      </aside>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" aria-labelledby="projects-h">
+      <h2 id="projects-h" style="margin:0 0 14px;font-size:var(--h2)">Selected projects</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>TA Tracker (Platform) — Optimoz</h3>
+          <p class="muted">
+            Full-stack delivery in Drupal 9/10 + React. <strong>80+ zero-downtime</strong> releases
+            via Composer/Drush + config-split; caching (BigPipe, Dynamic Page Cache, Render Cache)
+            cut dashboard load time by <strong>40%</strong>. Supports <strong>5,000+ users</strong>.
+          </p>
+          <div class="chiprow">
+            <span class="chip">Drupal 9/10</span><span class="chip">React</span><span class="chip">Composer/Drush</span>
+            <span class="chip">Caching</span><span class="chip">RBAC</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Real-Time Violence Detection API</h3>
+          <p class="muted">
+            Built a production-style <strong>Flask</strong> API around <strong>YOLOv8</strong> for real-time video analysis —
+            routing, structured JSON, and response patterns reusable for media pipelines.
+          </p>
+          <div class="chiprow">
+            <span class="chip">Flask</span><span class="chip">YOLOv8</span><span class="chip">REST</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Teen Crime Analytics Dashboard</h3>
+          <p class="muted">
+            Modeled datasets with <strong>Pandas</strong> and built visual dashboards surfacing trend insights —
+            patterns transferable to marketing analytics and KPI reporting.
+          </p>
+          <div class="chiprow">
+            <span class="chip">Pandas</span><span class="chip">DataViz</span>
+          </div>
+        </article>
+
+        <article class="card">
+          <h3>Integrations \& Data Migration</h3>
+          <p class="muted">
+            <strong>15,000+</strong> records migrated with Migrate API. REST/SOAP links to a legacy <strong>.NET</strong> system for
+            secure, bidirectional synchronization.
+          </p>
+          <div class="chiprow">
+            <span class="chip">Migrate API</span><span class="chip">.NET</span><span class="chip">SOAP</span><span class="chip">REST</span>
+          </div>
+        </article>
       </div>
     </section>
 
-    <section id="projects">
-      <div class="container">
-        <h2 class="section-title">Projects</h2>
-
-        <div class="cards">
-          <article class="card">
-            <h3>Real-time Violence Detection API</h3>
-            <p>Flask wrapper around YOLOv8 for low-latency inference. Production patterns for routing, structured JSON responses, and media handling.</p>
-            <div class="chiprow"><span class="chip">Flask</span><span class="chip">YOLOv8</span><span class="chip">API</span></div>
-            <!-- TODO(2): link a repo or PDF case study if you have it -->
-            <a class="btn cta mt-1" href="#" aria-disabled="true">Case study (soon)</a>
-          </article>
-
-          <article class="card">
-            <h3>Teen Crime Analytics Dashboard</h3>
-            <p>Pandas-driven data model with visual dashboards for trend analysis suited to KPI reporting and content performance insights.</p>
-            <div class="chiprow"><span class="chip">Pandas</span><span class="chip">DataViz</span></div>
-            <a class="btn cta mt-1" href="#" aria-disabled="true">Report (soon)</a>
-          </article>
-
-          <article class="card">
-            <h3>TA Tracker (Feature Delivery)</h3>
-            <p>Drupal 9/10 + React components, 80+ config releases via Composer/Drush and config-split, zero downtime; caching strategy yielded 40% faster dashboards.</p>
-            <div class="chiprow"><span class="chip">Drupal</span><span class="chip">React</span><span class="chip">Caching</span></div>
-            <!-- TODO(3): add a sanitized demo URL if allowed -->
-            <a class="btn cta mt-1" href="#" aria-disabled="true">Overview (soon)</a>
-          </article>
+    <!-- CONTACT -->
+    <section id="contact" aria-labelledby="contact-h">
+      <h2 id="contact-h" style="margin:34px 0 10px;font-size:var(--h2)">Get in touch</h2>
+      <div class="card">
+        <p class="muted">Open to Staff-level Creative Developer roles. Happy to share a one-page impact brief or walk through a perf improvement (–40% load time) and release process (80+ zero-downtime deploys).</p>
+        <div class="cta">
+          <a class="btn primary" href="mailto:jeetparekh80@gmail.com">Email me</a>
+          <a class="btn" href="https://linkedin.com/in/jeetparekh16" target="_blank" rel="noopener">Connect on LinkedIn</a>
         </div>
-      </div>
-    </section>
-
-    <section id="about">
-      <div class="container grid">
-        <h2 class="section-title">About</h2>
-        <p class="mt-1">
-          I translate creative concepts into responsive, measurable web experiences—partnering with marketing, design and engineering.
-          My toolkit: Drupal/React, content modeling, analytics instrumentation, SEO, and performance tuning.
-        </p>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container footgrid">
-      <div>© <span id="y"></span> Jeet Parekh</div>
-      <div class="tiny">Built with semantic HTML + CSS. No frameworks.</div>
-      <div class="actions">
-        <!-- TODO(4): update resume link if you want a button -->
-        <a class="btn" href="mailto:jeetparekh80@gmail.com">Contact</a>
-        <a class="btn" href="https://linkedin.com/in/jeetparekh16" target="_blank" rel="noreferrer">LinkedIn</a>
-      </div>
-    </div>
+    © <span id="y"></span> Jeet Parekh · Washington, D.C. · <a href="mailto:jeetparekh80@gmail.com">jeetparekh80@gmail.com</a>
   </footer>
 
   <script>
-    // year + respectful reduced motion scrolling
+    // year
     document.getElementById('y').textContent = new Date().getFullYear();
-    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    if(prefersReduced){
-      document.documentElement.style.scrollBehavior = 'auto';
-    }
+    // smooth scrolling for internal links
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const id=a.getAttribute('href').slice(1);
+        const el=document.getElementById(id);
+        if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth', block:'start'}); }
+      });
+    });
   </script>
 </body>
 </html>
